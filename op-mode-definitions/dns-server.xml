@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<interfaceDefinition>
+  <node name="show">
+    <children>
+      <node name="dns">
+        <properties>
+          <help>Show DNS information</help>
+        </properties>
+        <children>
+          <node name="server">
+            <properties>
+              <help>Show DNS server information</help>
+            </properties>
+            <children>
+            </children>
+          </node>
+        </children>
+      </node>
+    </children>
+  </node>
+  <node name="restart">
+    <children>
+      <node name="dns">
+        <properties>
+          <help>Restart a DNS service</help>
+        </properties>
+        <children>
+          <leafNode name="server">
+            <properties>
+              <help>Restart DNS server service</help>
+            </properties>
+            <command>sudo ${vyos_op_scripts_dir}/dns_server_restart.sh</command>
+          </leafNode>
+        </children>
+      </node>
+    </children>
+  </node>
+</interfaceDefinition>
