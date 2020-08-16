@@ -29,6 +29,12 @@ gsqlite3-pragma-synchronous={{ sqlite_sync }}
 gsqlite3-pragma-foreign-keys={{ sqlite_foreign_keys }}
 gsqlite3-dnsses={{ sqlite_dnssec }}
 {% endif %}
+{% if "bind" in backend %}
+bind-config={{ bind_config }}
+bind-check-interval={{ bind_check_interval }}
+bind-dnssec-db={{ bind_dnssec_db }}
+bind-ignore-broken-records={{ bind_ignore_broken_records }}
+{% endif %}
 
 # listen-on
 local-address={{ listen_on | join(", ") }}
@@ -147,9 +153,14 @@ default_config_data = {
     'mode': 'standalone',
     'listen_on': [],
     'backend': 'gsqlite3',
+    'sqlite_database': '',
     'sqlite_sync': 2,
     'sqlite_foreign_keys': 'yes',
     'sqlite_dnssec': 'yes',
+    'bind_config': '',
+    'bind_check_interval': 0,
+    'bind_dnssec_db': '',
+    'bind_ignore_broken_records': 'no',
     'receiver_threads': 1,
     'distributor_threads': 3,
     'cache_ttl': 60,
@@ -164,6 +175,9 @@ def get_backend_config(dns, backend):
     conf.set_level('service dns server backend {0}'.format(backend))
 
     if backend == "gsqlite3":
+        if conf.exists('database'):
+            dns['sqlite_database'] = conf.return_values('database')
+
         if conf.exists('sync'):
             dns['sqlite_sync'] = conf.return_values('sync')
 
@@ -172,6 +186,19 @@ def get_backend_config(dns, backend):
 
         if conf.exists('dnssec'):
             dns['sqlite_dnssec'] = conf.return_values('dnssec')
+    elif backend == "bind":
+        if conf.exists('config'):
+            dns['bind_config'] = conf.return_values('config')
+
+        if conf.exists('check-interval'):
+            dns['bind_check_interval'] = conf.return_values('check-interval')
+
+        if conf.exists('dnssec-db'):
+            dns['bind_dnssec_db'] = conf.return_values('dnssec-db')
+
+        if conf.exists('ignore-broken-records'):
+            dns['bind_ignore_broken_records'] =\
+                conf.return_values('ignore-broken-records')
 
     return dns
 

@@ -1,23 +1,5 @@
 <?xml version="1.0"?>
 <interfaceDefinition>
-  <node name="show">
-    <children>
-      <node name="dns">
-        <properties>
-          <help>Show DNS information</help>
-        </properties>
-        <children>
-          <node name="server">
-            <properties>
-              <help>Show DNS server information</help>
-            </properties>
-            <children>
-            </children>
-          </node>
-        </children>
-      </node>
-    </children>
-  </node>
   <node name="restart">
     <children>
       <node name="dns">

@@ -15,25 +15,27 @@
             </properties>
             <children>
               <leafNode name="mode">
-                <help>Mode the DNS server is running in</help>
-                <completionHelp>
-                  <list>standalone master slave</list>
-                </completionHelp>
-                <valueHelp>
-                  <format>standalone</format>
-                  <description>Standalone mode</description>
-                </valueHelp>
-                <valueHelp>
-                  <format>master</format>
-                  <description>Master in distributed mode</description>
-                </valueHelp>
-                <valueHelp>
-                  <format>slave</format>
-                  <description>Slave in distributed mode</description>
-                </valueHelp>
-                <constraint>
-                  <regex>(standalone|master|slave)</regex>
-                </constraint>
+                <properties>
+                  <help>Mode the DNS server is running in</help>
+                  <completionHelp>
+                    <list>standalone master slave</list>
+                  </completionHelp>
+                  <valueHelp>
+                    <format>standalone</format>
+                    <description>Standalone mode</description>
+                  </valueHelp>
+                  <valueHelp>
+                    <format>master</format>
+                    <description>Master in distributed mode</description>
+                  </valueHelp>
+                  <valueHelp>
+                    <format>slave</format>
+                    <description>Slave in distributed mode</description>
+                  </valueHelp>
+                  <constraint>
+                    <regex>(standalone|master|slave)</regex>
+                  </constraint>
+                </properties>
               </leafNode>
               <leafNode name="listen-address">
                 <properties>
@@ -102,6 +104,29 @@
                     <properties>
                       <help>BIND configuration files</help>
                     </properties>
+                    <children>
+                      <leafNode name="config">
+                        <properties>
+                          <help>Location of the BIND configuration file</help>
+                        </properties>
+                      </leafNode>
+                      <leafNode name="check-interval">
+                        <properties>
+                          <help>Interval in seconds to check for zone file changes</help>
+                        </properties>
+                      </leafNode>
+                      <leafNode name="dnssec-db">
+                        <properties>
+                          <help>Location of DNSSEC database file</help>
+                        </properties>
+                      </leafNode>
+                      <leafNode name="ignore-broken-records">
+                        <properties>
+                          <help>Ignore out-of-zone records</help>
+                          <valueless/>
+                        </properties>
+                      </leafNode>
+                    </children>
                   </node>
                 </children>
               </node>
