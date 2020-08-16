@@ -1,3 +1,9 @@
+vyos-1x (1.2.5-2+conexuos) unstable; urgency=low
+
+  * ConexuOS fork
+
+ -- Andrew Ying <andrew@as212921.net>  Mon, 16 Aug 2020 18:31:00 +0200
+
 vyos-1x (1.2.5) unstable; urgency=low
 
   * New release.
@@ -76,10 +82,10 @@ vyos-1x (1.2.0-3) unstable; urgency=medium
   * T933: adding vmac_xmit_base if use_vmac has been chosen
     to avoid split-brain
 
- -- hagbard <vyosdev@derith.de>  Thu, 25 Oct 2018 11:14:44 -0700 
+ -- hagbard <vyosdev@derith.de>  Thu, 25 Oct 2018 11:14:44 -0700
 
 vyos-1x (1.2.0-2) unstable; urgency=medium
-  
+
   * T773: adding wireguard support
 
  -- hagbard <vyosdev@derith.de>  Sat, 11 Aug 2018 15:51:34 -0700
@@ -91,7 +97,7 @@ vyos-1x (1.2.0-1) unstable; urgency=medium
  -- Daniil Baturin <daniil@baturin.org>  Fri, 27 Jul 2018 10:25:52 +0200
 
 vyos-1x (1.0.6) unstable; urgency=medium
-  
+
   * T736: Rewrite remote logging (syslog) to XML/Python
 
  -- hagbard <vyosdev@derith.de>  Tue, 24 Jul 2018 10:59:25 -0700
